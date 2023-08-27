@@ -1,0 +1,147 @@
+
+
+<div class="container row d-flex align-content-around">
+    <div class="input-group-prepend">
+
+        <select class="form-select" aria-label="Default select example" [(ngModel)]="vallueSearch" (input)="this.prdService.preformFilter(vallueSearch)">
+
+
+
+          <option selected="selected" [value]="selectOption"></option>
+
+       
+
+          <option value="Chair">Chair</option>
+
+          <option value="table">table</option>
+
+          <option value="3D/tv">3D/tv</option>
+
+      
+
+        </select>
+
+      </div>
+    <div class="col-md-2 text-center fs-3">
+        <h2> Filterd by:
+        </h2>
+    </div>
+    <div class="col-md-10">
+        <input type="text" class="form-control" [(ngModel)]="vallueSearch" (input)="this.prdService.preformFilter(vallueSearch)">
+    </div>
+    <div class="col-md-8">
+        <h2>Filter Value : {{vallueSearch }} </h2>
+    </div>
+    <div class="col-md-4">
+        <h3> {{dateT| date:'medium'}} </h3>
+    </div>
+
+
+</div>
+<div class="row">
+    <!-- <button (click)="togel()">Buy</button> -->
+
+    <hr>
+
+    <div class="col-sm-4 text-xl-center border-1" *ngFor="let item of afterFiltration"
+        [ngClass]="{'bg-warning':item.quantity==1}">
+        <img [src]="item.PrdimgURL" alt="no photo" class="img-fluid h-50 " *ngIf="showimg"  ImgStyle="50%" radiud1="150px" appShadow>
+        <h1> name:{{item.name|uppercase}} </h1>
+        <h1 class="text-decoration-line-through"> price: {{item.price |currency:'EGP'}}  </h1>
+        <h1 > Newprice: {{item.price |calcDiscount|currency:'EGP'}}</h1>
+        <h1 [ngClass]="item.Material=='Wood'? 'bg-danger':'' " [ngClass]="{'bg-success':item.Material!== 'Wood'}">
+            matiral :{{item.Material}} </h1>
+        <div class="p-2 m-3">
+
+            <span class="fs-3">quantity:</span>
+            <span class="text-white  p-3" [ngClass]="item.quantity<30? 'bg-warning' : 'bg-success'"> {{item.quantity}}
+            </span>
+            <div>
+                <!-- <ng-container [ngSwitch]="item.quantity">
+                    <ng-container [*ngSwi]></ng-container>
+                    <ng-container></ng-container>
+                    <ng-container></ng-container>
+                    <ng-container></ng-container>
+                    
+
+                </ng-container> -->
+
+                <!-- <ng-container [ngSwitch]="item.quantity">
+                    <ng-container *ngSwitchCase="item.quantity==1">
+                        last pice
+                    </ng-container>
+                    <ng-container *ngSwitchCase="item.quantity==2">
+                        last 2 pice
+                    </ng-container>
+                    <ng-container *ngSwitchCase="item.quantity==0">
+                        last pice
+                    </ng-container>
+                    <ng-container *ngSwitchCase="item.quantity>2">
+                     in stock
+                    </ng-container> -->
+
+                <!-- <p *ngSwitchCase="item.quantity==1">
+                    last pice
+                
+                </p>
+                <p *ngSwitchCase="item.quantity==2">
+                    last 2 item
+                
+                </p>
+                <p *ngSwitchCase="item.quantity==0">
+                    items all sell
+                
+                </p>
+                <p *ngSwitchDefault>
+                    inStock
+                
+                </p> -->
+
+
+
+                <!--              
+  </ng-container> -->
+                <ng-container [ngSwitch]="item.quantity">
+                    <ng-container *ngSwitchCase="'1'">
+                        <h3 one> Last one item</h3>
+                    </ng-container>
+
+                    <ng-container *ngSwitchCase="'2'">
+                        <h3 > Last 2 item</h3>
+                    </ng-container>
+
+                    <ng-container *ngSwitchCase="'0'">
+                        <h3>all items sold</h3>
+                    </ng-container>
+
+                    <ng-container *ngSwitchDefault>
+                        <h3>In Stock</h3>
+                    </ng-container>
+                </ng-container>
+
+            </div>
+        </div>
+        <button class="btn btn-danger mb-3" (click)="togel();decress(item)" [disabled]="item.quantity==0"><i
+                class="fa-solid fa-cart-shopping fa-text-width"><span class="p-2">Add to card </span></i></button>
+        <br>
+        <button class="btn btn-danger mb-3" (click)="decress(item)">add</button>
+        <br>
+
+    </div>
+
+</div>
+<div class="row ">
+    <h1 *ngIf="cata.length>0;else showtemplate"></h1>
+</div>
+<ng-template #showtemplate>
+    <h2 class="text-center bg-danger">Catogory  is  empty </h2>
+</ng-template>
+
+<div class="row mt-4"> 
+    <!-- <input type="number" [(ngModel)]="inputValue" [value]="inputValue|card" > -->
+        <input type="number"  maxlength="16"  [(ngModel)]="inputValue" (input)="  this.prdService.chg()" >
+
+    <div>
+        <p > {{inputValue|card}}   </p>
+    </div>
+</div>

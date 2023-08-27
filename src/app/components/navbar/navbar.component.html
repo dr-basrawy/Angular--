@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+    aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <span class="fw-bold text-info px-3" *ngIf="profile">Welcome {{profile.fullName}}</span>
+    <a class="navbar-brand" routerLinkActive="bg-dark text-white" routerLink="/task2">Task day 2</a>
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" routerLinkActive="bg-dark text-white" routerLink="/home">Home <span
+            class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLinkActive="bg-dark text-white" routerLink="/task4">task day 4</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="bg-dark text-white" routerLink="/productsByCatID">Products by Category (local service)</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="bg-dark text-white" routerLink="/products-by-json-server">JSON Server</a>
+      </li>
+      
+      <li class="nav-item" *ngIf="profile">
+        <a class="nav-link" routerLinkActive="bg-dark text-white" routerLink="/admin">Admin</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="bg-dark text-white" routerLink="/register">Register</a>
+      </li>
+
+      <li class="nav-item" >
+        <a class="nav-link" routerLinkActive="bg-dark text-white" routerLink="/auth/login" *ngIf="!profile">Login</a>
+        <a class="nav-link" routerLinkActive=" bg-dark text-white" (click)="logout()" *ngIf="profile">logout</a>
+      </li>
+
+
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="#" routerLinkActive="bg-dark text-white" routerLink="/test">TestApi</a>
+      </li> -->
+    </ul>
+    <!-- <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form> -->
+  </div>
+</nav>

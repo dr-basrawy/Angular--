@@ -1,0 +1,14 @@
+
+<div class="col-md-2 text-center fs-3">
+    <h2> Filterd by category:
+    </h2>
+</div>
+<select class="form-select mb-5" aria-label="Default select example" (change)="onCatChange($event.target)">
+
+
+
+    <option [selected]="true"  value="all">All</option>
+    <option *ngFor="let option of allCategories" [value]="option.id">{{option.cateName}}</option>
+  </select>
+<app-show-products detailsRoute="details-json-server" [products]="productList" ></app-show-products>
+

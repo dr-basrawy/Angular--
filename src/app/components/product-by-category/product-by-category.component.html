@@ -1,0 +1,24 @@
+
+<div class="col-md-2 text-center fs-3">
+    <h2> Filterd by category:
+    </h2>
+</div>
+<select class="form-select mb-5" aria-label="Default select example" (change)="onCatChange($event.target)">
+
+
+
+    <option [selected]="true" >All</option>
+
+ 
+
+    <option [value]="1">Chair</option>
+
+    <option [value]="2">table</option>
+
+    <option [value]="3">3D/tv</option>
+
+
+
+  </select>
+<app-show-products [products]="productList" ></app-show-products>
+

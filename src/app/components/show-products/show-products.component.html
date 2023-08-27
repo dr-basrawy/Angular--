@@ -1,0 +1,91 @@
+<div class="contianer">
+    <div class="row m-0">
+        <div class="col-sm-4 text-xl-center border-1 px-3" *ngFor="let item of products"
+            [ngClass]="{'bg-warning':item.quantity==1}">
+            <img [src]="item.PrdimgURL" alt="no photo" class="img-fluid h-50 " *ngIf="showimg" ImgStyle="100px"
+                radiud1="150px" appShadow>
+            <h1> name:{{item.name|uppercase}} </h1>
+            <h1 class="text-decoration-line-through"> price: {{item.price |currency:'EGP'}} </h1>
+            <h1> Newprice: {{item.price |calcDiscount|currency:'EGP'}}</h1>
+            <h1 [ngClass]="item.Material=='Wood'? 'bg-danger':'' " [ngClass]="{'bg-success':item.Material!== 'Wood'}">
+                matiral :{{item.Material}} </h1>
+            <div class="p-2 m-3">
+    
+                <span class="fs-3">quantity:</span>
+                <span class="text-white  p-3" [ngClass]="item.quantity<30? 'bg-warning' : 'bg-success'"> {{item.quantity}}
+                </span>
+                <div>
+                    <!-- <ng-container [ngSwitch]="item.quantity">
+                    <ng-container [*ngSwi]></ng-container>
+                    <ng-container></ng-container>
+                    <ng-container></ng-container>
+                    <ng-container></ng-container>
+                    
+    
+                </ng-container> -->
+    
+                    <!-- <ng-container [ngSwitch]="item.quantity">
+                    <ng-container *ngSwitchCase="item.quantity==1">
+                        last pice
+                    </ng-container>
+                    <ng-container *ngSwitchCase="item.quantity==2">
+                        last 2 pice
+                    </ng-container>
+                    <ng-container *ngSwitchCase="item.quantity==0">
+                        last pice
+                    </ng-container>
+                    <ng-container *ngSwitchCase="item.quantity>2">
+                     in stock
+                    </ng-container> -->
+    
+                    <!-- <p *ngSwitchCase="item.quantity==1">
+                    last pice
+                
+                </p>
+                <p *ngSwitchCase="item.quantity==2">
+                    last 2 item
+                
+                </p>
+                <p *ngSwitchCase="item.quantity==0">
+                    items all sell
+                
+                </p>
+                <p *ngSwitchDefault>
+                    inStock
+                
+                </p> -->
+    
+    
+    
+                    <!--              
+    </ng-container> -->
+                    <ng-container [ngSwitch]="item.quantity">
+                        <ng-container *ngSwitchCase="'1'">
+                            <h3 one> Last one item</h3>
+                        </ng-container>
+    
+                        <ng-container *ngSwitchCase="'2'">
+                            <h3> Last 2 item</h3>
+                        </ng-container>
+    
+                        <ng-container *ngSwitchCase="'0'">
+                            <h3>all items sold</h3>
+                        </ng-container>
+    
+                        <ng-container *ngSwitchDefault>
+                            <h3>In Stock</h3>
+                        </ng-container>
+                    </ng-container>
+    
+                </div>
+            </div>
+            <div class="d-flex flex-column align-items-center">
+                <button class="btn btn-danger mb-3 w-50" (click)="togel();decress(item)" [disabled]="item.quantity==0"><i
+                        class="fa-solid fa-cart-shopping fa-text-width"><span class="p-2">Add to card </span></i></button>
+                <button class="btn btn-danger mb-3 w-50" (click)="decress(item)">add</button>
+                <button class="btn btn-info mb-3 w-50" (click)="displayProductDetails(item.id)">View Details</button>
+    
+            </div>
+        </div>
+    </div>
+</div>

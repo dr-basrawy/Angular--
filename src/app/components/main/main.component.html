@@ -1,0 +1,32 @@
+<!-- <app-navbar></app-navbar> -->
+
+<div class="row">
+    <div class="index col-3">
+        <h2>index</h2>
+        
+    </div>
+    <div class="content col-9">
+        <h2>content</h2>
+        <div>
+            <app-product></app-product>
+            <!-- <app-products-list></app-products-list> -->
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <ul>
+  
+    <li *ngFor="let item of trackInterface.courses "> {{item}} </li>
+        </ul>
+    </div>
+    <div class="col-6">
+        <p>for test  modle interface</p>
+        <h1> {{trackInterface.trackName}} </h1>
+        <h1> {{trackInterface.trackNumber}} </h1>
+
+        
+    </div>
+</div>
+<!-- <app-footer></app-footer> -->

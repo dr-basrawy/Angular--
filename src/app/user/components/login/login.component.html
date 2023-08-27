@@ -1,0 +1,12 @@
+<div class="container border rounded-2 my-5">
+    <h2 class="text-secondary text-center mb-4">Login</h2>
+    <div class="alert alert-danger text-center" role="alert" *ngIf="errMessage">
+        {{errMessage}}
+    </div>
+    <form [formGroup]="loginForm">
+        <input type="email" class="form-control my-3" placeholder="Enter your email here" formControlName="email">
+        <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-outline-success text-center mb-3" [disabled]="loginForm.invalid" (click)="login()">Login</button>
+        </div>
+    </form>
+</div>

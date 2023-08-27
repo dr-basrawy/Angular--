@@ -1,0 +1,60 @@
+<div class="container">
+    <h2 class="text-secondary text-decoration-underline mb-4">Edit Product form</h2>
+    <div class="alert alert-danger text-center" role="alert" *ngIf="errMessage">
+        {{errMessage}}
+    </div>
+    <div class="d-flex flex-wrap" *ngIf="product">
+        <div class="d-flex w-100">
+            <div class="d-flex w-50 align-items-center">
+                <label for="id" class="w-25 px-3">Product Id:</label>
+                <input id="id" type="number" disabled [(ngModel)]="product.id" class="form-control w-75">
+            </div>
+            <div class="d-flex w-50 align-items-center">
+                <label for="name" class="w-25 px-3">Product Name:</label>
+                <input id="name" type="text" [(ngModel)]="product.name" class="form-control w-75">
+            </div>
+        </div>
+        <div class="d-flex py-3 w-100">
+            <div class="d-flex w-50 align-items-center">
+                <label for="quantity" class="w-25 px-3">Product Quantity:</label>
+                <input id="quantity" type="text" [(ngModel)]="product.quantity" class="form-control w-75">
+            </div>
+            <div class="d-flex w-50 align-items-center">
+                <label for="price" class="w-25 px-3">Product Price:</label>
+                <input id="price" type="text" [(ngModel)]="product.price" class="form-control w-75">
+            </div>
+        </div>
+        <div class="d-flex pb-3 w-100">
+            <div class="d-flex w-50 align-items-center">
+                <label for="material" class="w-25 px-3">Product Material:</label>
+                <input id="material" type="text" [(ngModel)]="product.Material" class="form-control w-75">
+            </div>
+            <div class="d-flex w-50 align-items-center">
+                <label for="descrpition" class="w-25 px-3">Description:</label>
+                <input id="descrpition" type="text" [(ngModel)]="product.description" class="form-control w-75">
+            </div>
+        </div>
+
+        <div class="d-flex pb-3 w-100">
+            <div class="d-flex w-50 align-items-center">
+                <label for="category" class="w-25 px-3">Description:</label>
+                <select id="category" class="form-select w-75" [(ngModel)]="product.categoryID">
+                    <option *ngFor="let option of allCategories" [value]="option.id">{{option.cateName}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="d-flex pb-3 w-100">
+            <div class="d-flex w-50 align-items-start">
+                <label for="prdImage" class="w-25 px-3">Product Image:</label>
+                <input id="prdImage" type="text" [(ngModel)]="product.PrdimgURL" class="form-control w-75">
+            </div>
+            <div class="w-50 d-flex">
+                <span class="w-25 px-3">Initial picture</span>
+                <img [src]="product.PrdimgURL" height="150px" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-end pt-3">
+        <button class="btn btn-outline-success" (click)="submit()">Edit</button>
+    </div>
+</div>
